@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumina — Futuristic Chat</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="orbs">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+</div>
+<div class="topglow"></div>
+
+<!-- LANDING -->
+<div class="page active" id="pg-land">
+<div class="land">
+  <nav class="land-nav">
+    <div class="land-logo">
+      <div class="lmark">L</div>
+      <div class="lname">Lumina</div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-outline" onclick="showPage('pg-login')">Sign In</button>
+      <button class="btn-solid" onclick="showPage('pg-register')">Get Started</button>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="hero-badge"><div class="badge-dot"></div>Open Beta — 10,000+ users worldwide</div>
+    <h1>Connect beyond<br><span>the ordinary</span></h1>
+    <p>A next-generation chat platform built for the digital cosmos. Real-time, encrypted, beautiful, and powered by AI.</p>
+    <div class="hero-btns">
+      <button class="hbtn hbtn-p" onclick="showPage('pg-register')">✦ Launch Lumina</button>
+      <button class="hbtn hbtn-g" onclick="showPage('pg-login')">Sign In →</button>
+    </div>
+    <div class="preview-wrap">
+      <div class="prev-bar">
+        <div class="pb-dots">
+          <div class="pb-dot" style="background:#f472b6"></div>
+          <div class="pb-dot" style="background:#fbbf24"></div>
+          <div class="pb-dot" style="background:#34d399"></div>
+        </div>
+        <div class="pb-url">lumina://chat/cosmic-lounge</div>
+      </div>
+      <div class="prev-body">
+        <div class="mrow r fade-in">
+          <div class="mav" style="background:linear-gradient(135deg,#f472b6,#7c3aed)">AR</div>
+          <div class="mg"><div class="bub">Hey! Just dropped the spatial audio update 🎧 The 3D rooms are insane</div><div class="bm">10:24 AM</div></div>
+        </div>
+        <div class="mrow s fade-in" style="animation-delay:.2s">
+          <div class="mg"><div class="bub">Whoa, this is incredible! How did you tune the positional engine?</div><div class="bm">10:26 AM <i class="ti ti-checks seen"></i></div></div>
+        </div>
+        <div class="mrow r fade-in" style="animation-delay:.4s">
+          <div class="mav" style="background:linear-gradient(135deg,#f472b6,#7c3aed)">AR</div>
+          <div class="mg"><div class="bub">AI-tuned the whole thing overnight ✨ Wait till you see the hologram rooms</div><div class="bm">10:28 AM</div><div class="reacts"><div class="rc">🔥 <span>5</span></div><div class="rc">🚀 <span>2</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="feats">
+    <h2>Built for the future</h2>
+    <p>Everything you need for seamless digital communication</p>
+    <div class="feat-grid">
+      <div class="fc"><div class="fc-icon"><i class="ti ti-message-2" style="color:#fff;font-size:20px"></i></div><h3>Real-Time Messaging</h3><p>Sub-50ms delivery via WebSocket. Typing indicators, read receipts, reactions, and rich media.</p></div>
+      <div class="fc"><div class="fc-icon"><i class="ti ti-users" style="color:#fff;font-size:20px"></i></div><h3>Group Rooms</h3><p>Create rooms for up to 500 members with admin controls, pinned messages, and invite codes.</p></div>
+      <div class="fc"><div class="fc-icon"><i class="ti ti-video" style="color:#fff;font-size:20px"></i></div><h3>HD Video Calls</h3><p>Crystal-clear WebRTC video and voice calls with screen sharing and virtual backgrounds.</p></div>
+      <div class="fc"><div class="fc-icon"><i class="ti ti-robot" style="color:#fff;font-size:20px"></i></div><h3>AI Smart Replies</h3><p>Context-aware reply suggestions powered by the Lumina AI engine — always on point.</p></div>
+      <div class="fc"><div class="fc-icon"><i class="ti ti-lock" style="color:#fff;font-size:20px"></i></div><h3>End-to-End Encrypted</h3><p>Military-grade encryption protects every message, file, and call in transit and at rest.</p></div>
+      <div class="fc"><div class="fc-icon"><i class="ti ti-sparkles" style="color:#fff;font-size:20px"></i></div><h3>Futuristic UI</h3><p>Glassmorphism design with neon aesthetics, smooth animations, and dark/light/cyber themes.</p></div>
+    </div>
+  </div>
+  <div class="cta">
+    <h2>Ready to enter Lumina?</h2>
+    <p>Join thousands of early adopters shaping the future of communication.</p>
+    <button class="hbtn hbtn-p" onclick="showPage('pg-register')">✦ Start for Free</button>
+  </div>
+</div>
+</div>
+
+<!-- LOGIN -->
+<div class="page" id="pg-login">
+<div class="auth-page">
+  <div class="orbs" style="position:absolute"><div class="orb o1"></div><div class="orb o2"></div></div>
+  <div class="auth-box">
+    <div class="auth-logo"><div class="lmark">L</div><span style="font-size:18px;font-weight:800">Lumina</span></div>
+    <div class="auth-title">Welcome back</div>
+    <div class="auth-sub">Sign in to your Lumina account</div>
+    <div class="field"><label>Email</label>
+      <div class="finput"><i class="ti ti-mail"></i><input type="email" placeholder="you@lumina.app" id="li-email"></div>
+    </div>
+    <div class="field"><label>Password</label>
+      <div class="finput"><i class="ti ti-lock"></i><input type="password" placeholder="••••••••" id="li-pw"><i class="ti ti-eye eye" onclick="togglePw('li-pw',this)"></i></div>
+    </div>
+    <div class="field-error" id="login-error"></div>
+    <button class="sbtn" id="login-submit" onclick="doLogin()"><i class="ti ti-login"></i> Sign In</button>
+    <div class="div-or">or</div>
+    <button class="demo-btn" id="demo-submit" onclick="demoLogin()"><span class="demo-star">✦</span> Use Demo Account</button>
+    <div class="auth-foot">Don't have an account? <a onclick="showPage('pg-register')">Create one free</a></div>
+    <div class="auth-foot" style="margin-top:8px"><a onclick="showPage('pg-land')">← Back to home</a></div>
+  </div>
+</div>
+</div>
+
+<!-- REGISTER -->
+<div class="page" id="pg-register">
+<div class="auth-page">
+  <div class="orbs" style="position:absolute"><div class="orb o1" style="background:var(--pk)"></div><div class="orb o2"></div></div>
+  <div class="auth-box">
+    <div class="auth-logo"><div class="lmark">L</div><span style="font-size:18px;font-weight:800">Lumina</span></div>
+    <div class="auth-title">Create account</div>
+    <div class="auth-sub">Join the digital cosmos</div>
+    <div class="steps-bar"><div class="step-seg done" id="seg1"></div><div class="step-seg" id="seg2"></div></div>
+    <div id="reg-s1">
+      <div class="field"><label>Email</label>
+        <div class="finput"><i class="ti ti-mail"></i><input type="email" placeholder="you@lumina.app" id="reg-email"></div>
+      </div>
+      <div class="field"><label>Password</label>
+        <div class="finput"><i class="ti ti-lock"></i><input type="password" placeholder="Min. 6 characters" id="reg-pw"><i class="ti ti-eye eye" onclick="togglePw('reg-pw',this)"></i></div>
+      </div>
+      <div class="field-error" id="register-error"></div>
+      <button class="sbtn" onclick="regNext()">Continue <i class="ti ti-arrow-right"></i></button>
+    </div>
+    <div id="reg-s2" class="hidden">
+      <div class="reg-av" id="reg-preview" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">??</div>
+      <div class="color-picks" id="colorPicks"></div>
+      <div class="field"><label>Username *</label>
+        <div class="finput"><span style="color:var(--t3);font-size:13px">@</span><input type="text" placeholder="your_handle" id="reg-user" oninput="updatePreview()"></div>
+      </div>
+      <div class="field"><label>Display Name</label>
+        <div class="finput"><i class="ti ti-user"></i><input type="text" placeholder="Your name" id="reg-name" oninput="updatePreview()"></div>
+      </div>
+      <div class="field-error" id="register-error-s2"></div>
+      <div style="display:flex;gap:10px">
+        <button class="demo-btn" style="flex:1" onclick="regBack()"><i class="ti ti-arrow-left"></i> Back</button>
+        <button class="sbtn" id="register-submit" style="flex:2" onclick="doRegister()"><i class="ti ti-rocket"></i> Launch!</button>
+      </div>
+    </div>
+    <div class="auth-foot">Already have an account? <a onclick="showPage('pg-login')">Sign in</a></div>
+    <div class="auth-foot" style="margin-top:8px"><a onclick="showPage('pg-land')">← Back to home</a></div>
+  </div>
+</div>
+</div>
+
+<!-- MAIN APP -->
+<div class="page" id="pg-app">
+<div class="shell">
+  <nav class="sidebar">
+    <div class="logo" onclick="logout()">L</div>
+    <button class="nb" onclick="openNewChat()" title="New chat"><i class="ti ti-plus"></i></button>
+    <div style="width:28px;height:1px;background:var(--gb);margin:4px 0"></div>
+    <button class="nb on" onclick="setNav(this,'contacts')" title="Chats"><i class="ti ti-message-2"></i></button>
+    <button class="nb" onclick="setNav(this,'discover')" title="Discover"><i class="ti ti-compass"></i></button>
+    <button class="nb" onclick="setNav(this,'calls')" title="Calls"><i class="ti ti-phone"></i></button>
+    <button class="nb" onclick="setNav(this,'notifs')" title="Notifications"><i class="ti ti-bell"></i><span class="nb-badge"></span></button>
+    <button class="nb" onclick="setNav(this,'files')" title="Files"><i class="ti ti-folder"></i></button>
+    <div class="sb-bot">
+      <button class="nb" onclick="showProfile()" title="Settings"><i class="ti ti-settings"></i></button>
+      <div class="status-ring"><div class="av-tiny" id="myAvatar" onclick="showProfile()">Y</div></div>
+    </div>
+  </nav>
+  <div class="contacts" id="contacts-panel">
+    <div class="cp-head">
+      <div class="cp-title">Messages</div>
+      <div class="search"><i class="ti ti-search" style="color:var(--t3);font-size:14px"></i><input type="text" placeholder="Search chats, people..." oninput="filterContacts(this.value)"></div>
+    </div>
+    <div class="tabs">
+      <button class="tab on" onclick="setTab(this,'all')">All</button>
+      <button class="tab" onclick="setTab(this,'groups')">Groups</button>
+      <button class="tab" onclick="setTab(this,'direct')">Direct</button>
+    </div>
+    <div class="cl" id="contactList"></div>
+  </div>
+  <div class="chat-area">
+    <div class="ch">
+      <div class="ch-l">
+        <button class="ib mob-back" onclick="backToContacts()" title="Back"><i class="ti ti-arrow-left"></i></button>
+        <div class="av" style="background:linear-gradient(135deg,#f472b6,#7c3aed);width:40px;height:40px" id="activeAvatar">AR<span class="sd on"></span></div>
+        <div><div class="ch-name" id="activeName">Select a conversation</div><div class="ch-status" id="activeStatus"></div></div>
+      </div>
+      <div class="ch-r">
+        <button class="ib" onclick="startCall('voice')" title="Voice Call"><i class="ti ti-phone"></i></button>
+        <button class="ib" onclick="startCall('video')" title="Video Call"><i class="ti ti-video"></i></button>
+        <button class="ib" title="Search"><i class="ti ti-search"></i></button>
+        <button class="ib" title="Pin"><i class="ti ti-pin"></i></button>
+        <button class="ib" title="More"><i class="ti ti-dots"></i></button>
+      </div>
+    </div>
+    <div class="msgs" id="msgContainer"></div>
+    <div class="input-area">
+      <div class="toolbar">
+        <button class="tb" title="Emoji" onclick="insertEmoji()"><i class="ti ti-mood-smile"></i></button>
+        <button class="tb gif" title="GIF">GIF</button>
+        <button class="tb" title="Image"><i class="ti ti-photo"></i></button>
+        <button class="tb" title="File"><i class="ti ti-paperclip"></i></button>
+        <button class="tb" title="Voice" onclick="insertVoice()"><i class="ti ti-microphone"></i></button>
+        <button class="tb" title="Schedule"><i class="ti ti-calendar-time"></i></button>
+        <button class="tb" title="AI Reply" style="color:var(--p)"><i class="ti ti-sparkles"></i></button>
+      </div>
+      <div class="ir">
+        <div class="iw">
+          <textarea class="mi" id="msgInput" placeholder="Send a message..." rows="1" oninput="autoResize(this)" onkeydown="handleKey(event)"></textarea>
+          <span style="font-size:16px;cursor:pointer;color:var(--t3)" onclick="insertEmoji()">😊</span>
+        </div>
+        <button class="send" onclick="sendMsg()"><i class="ti ti-send"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="rp">
+    <div class="rph"><div class="rpt">Profile</div></div>
+    <div class="rpc" id="rpContent"></div>
+  </div>
+</div>
+
+<!-- Overlays -->
+<div id="overlay-discover" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;z-index:50;background:var(--bg);overflow:auto">
+  <div style="display:flex;align-items:center;gap:10px;padding:20px 28px;border-bottom:1px solid var(--gb)">
+    <button class="ib" onclick="closeOverlay()"><i class="ti ti-arrow-left"></i></button>
+    <span style="font-size:16px;font-weight:700">Discover</span>
+  </div>
+  <div class="disc-page">
+    <div class="disc-head">
+      <div class="disc-title">Community Rooms</div>
+      <div class="disc-search"><i class="ti ti-search" style="color:var(--t3);font-size:14px"></i><input type="text" placeholder="Search rooms..."></div>
+    </div>
+    <div class="disc-grid" id="discoverGrid"></div>
+  </div>
+</div>
+
+<div id="overlay-profile" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;z-index:50;background:var(--bg);overflow:auto">
+  <div style="display:flex;align-items:center;gap:10px;padding:20px 28px;border-bottom:1px solid var(--gb)">
+    <button class="ib" onclick="closeOverlay()"><i class="ti ti-arrow-left"></i></button>
+    <span style="font-size:16px;font-weight:700">Profile & Settings</span>
+  </div>
+  <div class="prof-page">
+    <div class="prof-card">
+      <h3>Your Profile</h3>
+      <div class="prof-av-row">
+        <div class="prof-av" id="profAvatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">Y</div>
+        <div class="prof-av-info">
+          <h4 id="profName">Your Name</h4>
+          <p id="profEmail">you@lumina.app</p>
+          <button class="change-av-btn">Change Avatar</button>
+        </div>
+      </div>
+      <div class="pfield"><label>Display Name</label><input class="pinput" id="pf-name" placeholder="Your display name"></div>
+      <div class="pfield"><label>Username</label><input class="pinput" id="pf-user" placeholder="@username"></div>
+      <div class="pfield"><label>Bio</label><textarea class="pinput ptextarea" id="pf-bio" placeholder="Tell the cosmos about yourself..."></textarea></div>
+      <div class="pfield"><label>Email</label><input class="pinput" id="pf-email" placeholder="your@email.com"></div>
+    </div>
+    <div class="prof-card">
+      <h3>Appearance</h3>
+      <div class="pfield"><label>Theme</label>
+        <div class="theme-picks">
+          <div class="tp sel" data-theme="dark" onclick="setTheme(this,'dark')"><div class="tp-icon">🌙</div><div class="tp-name">Dark</div></div>
+          <div class="tp" data-theme="light" onclick="setTheme(this,'light')"><div class="tp-icon">☀️</div><div class="tp-name">Light</div></div>
+          <div class="tp" data-theme="cyber" onclick="setTheme(this,'cyber')"><div class="tp-icon">⚡</div><div class="tp-name">Cyber</div></div>
+        </div>
+      </div>
+      <div class="pfield"><label>Avatar Color</label><div class="color-picks" id="profColorPicks"></div></div>
+    </div>
+    <button class="save-btn" onclick="saveProfile()"><i class="ti ti-check"></i> Save Changes</button>
+    <button class="demo-btn" onclick="logout()" style="margin-top:10px"><i class="ti ti-logout"></i> Log Out</button>
+    <div style="height:32px"></div>
+  </div>
+</div>
+
+<div id="overlay-notifs" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;z-index:50;background:var(--bg);overflow:auto">
+  <div style="display:flex;align-items:center;gap:10px;padding:20px 28px;border-bottom:1px solid var(--gb)">
+    <button class="ib" onclick="closeOverlay()"><i class="ti ti-arrow-left"></i></button>
+    <span style="font-size:16px;font-weight:700">Notifications</span>
+  </div>
+  <div class="notif-page" id="notifList"></div>
+</div>
+
+<!-- Call Modal -->
+<div id="call-modal" style="display:none;position:absolute;inset:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);align-items:center;justify-content:center;flex-direction:column">
+  <div style="background:var(--bg2);border:1px solid var(--gb);border-radius:24px;padding:36px;text-align:center;min-width:280px">
+    <div id="callAvatar" style="width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f472b6,#7c3aed)">AR</div>
+    <div style="font-size:18px;font-weight:700;margin-bottom:4px" id="callName">Aria Nova</div>
+    <div style="font-size:13px;color:var(--t3);margin-bottom:8px" id="callType">Video Call</div>
+    <div style="font-size:12px;color:var(--g);margin-bottom:28px" id="callStatus">Connecting...</div>
+    <div style="width:200px;height:140px;border-radius:16px;background:linear-gradient(135deg,#0e0e1c,#1a1a3a);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gb)">
+      <i class="ti ti-video" style="font-size:32px;color:var(--t3)"></i>
+    </div>
+    <div style="display:flex;justify-content:center;gap:14px">
+      <button class="ib" style="width:48px;height:48px;border-radius:50%;font-size:18px"><i class="ti ti-microphone-off"></i></button>
+      <button onclick="endCall()" style="width:52px;height:52px;border-radius:50%;background:#dc2626;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px"><i class="ti ti-phone-off"></i></button>
+      <button class="ib" style="width:48px;height:48px;border-radius:50%;font-size:18px"><i class="ti ti-camera-off"></i></button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end pg-app -->
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
