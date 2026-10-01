@@ -1,0 +1,14 @@
+.shell{display:flex;height:100vh;position:relative;z-index:1}
+.sidebar{width:var(--sw);flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:16px 0 20px;gap:6px;background:rgba(7,7,15,0.88);backdrop-filter:blur(24px);border-right:1px solid var(--gb);position:relative;z-index:20}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--p),var(--c));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;margin-bottom:14px;cursor:pointer;box-shadow:0 0 22px var(--glow);transition:transform .2s}
+.logo:hover{transform:scale(1.07)}
+.nb{width:42px;height:42px;border-radius:13px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:19px;transition:all .2s;position:relative}
+.nb:hover,.nb.on{background:var(--glass);color:var(--t)}
+.nb.on::before{content:'';position:absolute;left:-2px;top:50%;transform:translateY(-50%);width:3px;height:22px;background:var(--p);border-radius:0 3px 3px 0;box-shadow:0 0 10px var(--p)}
+.nb-badge{position:absolute;top:7px;right:7px;width:7px;height:7px;background:var(--pk);border-radius:50%;border:1.5px solid var(--bg);box-shadow:0 0 7px var(--pk)}
+.sb-bot{margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:8px}
+.av-tiny{width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;border:2px solid rgba(139,92,246,.55);box-shadow:0 0 14px var(--glow);transition:transform .2s}
+.av-tiny:hover{transform:scale(1.08)}
+.status-ring{position:relative}
+.status-ring::after{content:'';position:absolute;bottom:0;right:0;width:9px;height:9px;border-radius:50%;background:var(--g);border:2px solid var(--bg);box-shadow:0 0 7px var(--g);animation:sPulse 2.2s infinite}
+@keyframes sPulse{0%,100%{opacity:1}50%{opacity:.45}}

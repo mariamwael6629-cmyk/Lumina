@@ -17,10 +17,11 @@ Lumina is a sleek, next-generation web-based messaging platform featuring a glas
 Lumina/
 ├── frontend/          # Static SPA (HTML/CSS/vanilla JS) — see frontend below
 │   ├── index.html
-│   ├── css/style.css
+│   ├── css/           # base, sidebar, contacts, chat, right-panel, landing, auth, discover, profile, notifications, utilities, responsive
 │   └── js/
-│       ├── api.js     # Backend API client
-│       └── app.js     # UI logic / state
+│       ├── core/      # api (backend client), state, ui helpers, toast
+│       ├── features/  # auth, app-shell, conversations, ai-panel, discover, notifications, profile, calls
+│       └── main.js    # Resume session on load
 ├── backend/           # FastAPI REST API — see backend/README.md
 └── Images/            # Reference screenshots
 ```
@@ -42,7 +43,7 @@ Lumina/
    ```
    Then open `http://127.0.0.1:5500/index.html`.
 
-   To point the frontend at a different backend URL, set `window.LUMINA_API_BASE` in a `<script>` tag before `js/api.js` loads in `index.html`.
+   To point the frontend at a different backend URL, set `window.LUMINA_API_BASE` in a `<script>` tag before `js/core/api.js` loads in `index.html`.
 
 ## 🛠️ Built with
 

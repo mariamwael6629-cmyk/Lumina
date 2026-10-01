@@ -1,0 +1,23 @@
+/* ===== Responsive layout =====
+   The original layout used fixed pixel widths for sidebar/contacts/right
+   panel with no breakpoints, which overflowed completely below ~1100px.
+   These rules progressively collapse panels instead of changing markup. */
+@media (max-width: 1100px){
+  .rp{display:none}
+}
+@media (max-width: 760px){
+  :root{--pw:240px}
+  .rp{display:none}
+  .shell{position:relative}
+  .contacts{position:absolute;left:var(--sw);top:0;bottom:0;z-index:15;width:calc(100% - var(--sw));max-width:340px}
+  .chat-area{width:100%}
+  .mob-back{display:flex}
+  body.chat-open .contacts{display:none}
+}
+@media (max-width: 480px){
+  :root{--sw:60px}
+  .mg{max-width:78%}
+  .auth-box{padding:24px}
+  .disc-page,.prof-page,.notif-page{padding:18px}
+  .hero p{font-size:14px}
+}
