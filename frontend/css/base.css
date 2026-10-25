@@ -2,7 +2,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0C0B0A;--bg2:#181512;--glass:rgba(255,255,255,0.045);--gb:rgba(255,255,255,0.09);
-  --p:#C84163;--c:#C84163;--pk:#C84163;--g:#C74062;--amber:#fbbf24;
+  --p:#C84163;--c:#C84163;--pk:#C84163;--g:#C74062;--amber:#D87C47;
   --t:#F6F5F4;--t2:#B1A69B;--t3:#63584D;
   --glow:transparent;--cglow:transparent;
   --sw:72px;--pw:288px;--rw:256px;
