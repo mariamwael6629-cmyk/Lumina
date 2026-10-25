@@ -1,9 +1,10 @@
 const AVATAR_COLORS = [
-  'linear-gradient(135deg,#7c3aed,#06b6d4)',
-  'linear-gradient(135deg,#f472b6,#7c3aed)',
-  'linear-gradient(135deg,#10b981,#06b6d4)',
-  'linear-gradient(135deg,#f59e0b,#ec4899)',
-  'linear-gradient(135deg,#6366f1,#f472b6)',
+  '#C84163',
+  '#B4532A',
+  '#8A5A2B',
+  '#A16207',
+  '#6B4F3A',
+  '#9C2D49',
 ];
 
 let state = {

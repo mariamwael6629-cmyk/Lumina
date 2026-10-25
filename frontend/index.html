@@ -45,28 +45,28 @@
     <h1>Connect beyond<br><span>the ordinary</span></h1>
     <p>A next-generation chat platform built for the digital cosmos. Real-time, encrypted, beautiful, and powered by AI.</p>
     <div class="hero-btns">
-      <button class="hbtn hbtn-p" onclick="showPage('pg-register')">✦ Launch Lumina</button>
+      <button class="hbtn hbtn-p" onclick="showPage('pg-register')">Launch Lumina</button>
       <button class="hbtn hbtn-g" onclick="showPage('pg-login')">Sign In →</button>
     </div>
     <div class="preview-wrap">
       <div class="prev-bar">
         <div class="pb-dots">
-          <div class="pb-dot" style="background:#f472b6"></div>
+          <div class="pb-dot" style="background:#C84163"></div>
           <div class="pb-dot" style="background:#fbbf24"></div>
-          <div class="pb-dot" style="background:#34d399"></div>
+          <div class="pb-dot" style="background:#C74062"></div>
         </div>
         <div class="pb-url">lumina://chat/cosmic-lounge</div>
       </div>
       <div class="prev-body">
         <div class="mrow r fade-in">
-          <div class="mav" style="background:linear-gradient(135deg,#f472b6,#7c3aed)">AR</div>
+          <div class="mav" style="background:#C84163">AR</div>
           <div class="mg"><div class="bub">Hey! Just dropped the spatial audio update 🎧 The 3D rooms are insane</div><div class="bm">10:24 AM</div></div>
         </div>
         <div class="mrow s fade-in" style="animation-delay:.2s">
           <div class="mg"><div class="bub">Whoa, this is incredible! How did you tune the positional engine?</div><div class="bm">10:26 AM <i class="ti ti-checks seen"></i></div></div>
         </div>
         <div class="mrow r fade-in" style="animation-delay:.4s">
-          <div class="mav" style="background:linear-gradient(135deg,#f472b6,#7c3aed)">AR</div>
+          <div class="mav" style="background:#C84163">AR</div>
           <div class="mg"><div class="bub">AI-tuned the whole thing overnight ✨ Wait till you see the hologram rooms</div><div class="bm">10:28 AM</div><div class="reacts"><div class="rc">🔥 <span>5</span></div><div class="rc">🚀 <span>2</span></div></div></div>
         </div>
       </div>
@@ -87,7 +87,7 @@
   <div class="cta">
     <h2>Ready to enter Lumina?</h2>
     <p>Join thousands of early adopters shaping the future of communication.</p>
-    <button class="hbtn hbtn-p" onclick="showPage('pg-register')">✦ Start for Free</button>
+    <button class="hbtn hbtn-p" onclick="showPage('pg-register')">Start for Free</button>
   </div>
 </div>
 </div>
@@ -136,7 +136,7 @@
       <button class="sbtn" onclick="regNext()">Continue <i class="ti ti-arrow-right"></i></button>
     </div>
     <div id="reg-s2" class="hidden">
-      <div class="reg-av" id="reg-preview" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">??</div>
+      <div class="reg-av" id="reg-preview" style="background:#C84163">??</div>
       <div class="color-picks" id="colorPicks"></div>
       <div class="field"><label>Username *</label>
         <div class="finput"><span style="color:var(--t3);font-size:13px">@</span><input type="text" placeholder="your_handle" id="reg-user" oninput="updatePreview()"></div>
@@ -189,7 +189,7 @@
     <div class="ch">
       <div class="ch-l">
         <button class="ib mob-back" onclick="backToContacts()" title="Back"><i class="ti ti-arrow-left"></i></button>
-        <div class="av" style="background:linear-gradient(135deg,#f472b6,#7c3aed);width:40px;height:40px" id="activeAvatar">AR<span class="sd on"></span></div>
+        <div class="av" style="background:#C84163;width:40px;height:40px" id="activeAvatar">AR<span class="sd on"></span></div>
         <div><div class="ch-name" id="activeName">Select a conversation</div><div class="ch-status" id="activeStatus"></div></div>
       </div>
       <div class="ch-r">
@@ -250,7 +250,7 @@
     <div class="prof-card">
       <h3>Your Profile</h3>
       <div class="prof-av-row">
-        <div class="prof-av" id="profAvatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">Y</div>
+        <div class="prof-av" id="profAvatar" style="background:#C84163">Y</div>
         <div class="prof-av-info">
           <h4 id="profName">Your Name</h4>
           <p id="profEmail">you@lumina.app</p>
@@ -290,11 +290,11 @@
 <!-- Call Modal -->
 <div id="call-modal" style="display:none;position:absolute;inset:0;z-index:200;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);align-items:center;justify-content:center;flex-direction:column">
   <div style="background:var(--bg2);border:1px solid var(--gb);border-radius:24px;padding:36px;text-align:center;min-width:280px">
-    <div id="callAvatar" style="width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;background:linear-gradient(135deg,#f472b6,#7c3aed)">AR</div>
+    <div id="callAvatar" style="width:72px;height:72px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#fff;background:#C84163">AR</div>
     <div style="font-size:18px;font-weight:700;margin-bottom:4px" id="callName">Aria Nova</div>
     <div style="font-size:13px;color:var(--t3);margin-bottom:8px" id="callType">Video Call</div>
     <div style="font-size:12px;color:var(--g);margin-bottom:28px" id="callStatus">Connecting...</div>
-    <div style="width:200px;height:140px;border-radius:16px;background:linear-gradient(135deg,#0e0e1c,#1a1a3a);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gb)">
+    <div style="width:200px;height:140px;border-radius:16px;background:linear-gradient(135deg,#181512,#3A1A22);margin:0 auto 24px;display:flex;align-items:center;justify-content:center;border:1px solid var(--gb)">
       <i class="ti ti-video" style="font-size:32px;color:var(--t3)"></i>
     </div>
     <div style="display:flex;justify-content:center;gap:14px">

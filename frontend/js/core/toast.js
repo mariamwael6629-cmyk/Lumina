@@ -9,8 +9,8 @@ function showToast(msg, type) {
     bottom: '24px',
     left: '50%',
     transform: 'translateX(-50%)',
-    background: 'rgba(14,14,28,0.96)',
-    color: '#f1f5f9',
+    background: 'rgba(24,21,18,0.96)',
+    color: '#F6F5F4',
     border: '1px solid rgba(255,255,255,0.1)',
     backdropFilter: 'blur(20px)',
     padding: '10px 22px',
@@ -22,7 +22,7 @@ function showToast(msg, type) {
     boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
     animation: 'mIn .3s ease',
   });
-  if (type === 'error') t.style.borderColor = 'rgba(244,114,182,0.4)';
+  if (type === 'error') t.style.borderColor = 'rgba(200,65,99,0.4)';
   document.body.appendChild(t);
   setTimeout(() => t.remove(), 3000);
 }

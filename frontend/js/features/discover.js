@@ -25,9 +25,9 @@ async function joinRoom(btn, roomId) {
   try {
     await api.joinRoom(roomId);
     btn.textContent = '✓ Joined!';
-    btn.style.background = 'rgba(16,185,129,.15)';
-    btn.style.borderColor = 'rgba(16,185,129,.4)';
-    btn.style.color = '#34d399';
+    btn.style.background = 'rgba(156,45,73,.15)';
+    btn.style.borderColor = 'rgba(156,45,73,.4)';
+    btn.style.color = '#C74062';
     showToast('Joined room! 🚀');
   } catch (err) {
     btn.disabled = false;

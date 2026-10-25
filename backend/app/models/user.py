@@ -15,7 +15,7 @@ class User(Base):
     hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
     display_name: Mapped[str] = mapped_column(String(100), nullable=False)
     avatar_color: Mapped[str] = mapped_column(
-        String(120), default="linear-gradient(135deg,#7c3aed,#06b6d4)"
+        String(120), default="#C84163"
     )
     bio: Mapped[str | None] = mapped_column(String(280), nullable=True)
     theme: Mapped[str] = mapped_column(String(20), default="dark")
