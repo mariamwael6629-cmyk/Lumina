@@ -1,5 +1,5 @@
 .chat-area{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative}
-.ch{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;flex-shrink:0;background:rgba(12,11,10,.6);backdrop-filter:blur(22px);border-bottom:1px solid var(--gb)}
+.ch{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;flex-shrink:0;background:rgba(11,11,11,.6);backdrop-filter:blur(22px);border-bottom:1px solid var(--gb)}
 .ch-l{display:flex;align-items:center;gap:12px}
 .ch-name{font-size:15px;font-weight:600}
 .ch-status{font-size:11px;color:var(--g);display:flex;align-items:center;gap:5px;margin-top:2px}
@@ -32,7 +32,7 @@
 .td{width:6px;height:6px;border-radius:50%;background:var(--t3);animation:tb 1.2s infinite}
 .td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
 @keyframes tb{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-.input-area{padding:13px 18px;border-top:1px solid var(--gb);background:rgba(12,11,10,.58);backdrop-filter:blur(20px);flex-shrink:0}
+.input-area{padding:13px 18px;border-top:1px solid var(--gb);background:rgba(11,11,11,.58);backdrop-filter:blur(20px);flex-shrink:0}
 .toolbar{display:flex;gap:5px;margin-bottom:9px}
 .tb{width:28px;height:28px;border-radius:8px;border:1px solid var(--gb);background:transparent;cursor:pointer;color:var(--t3);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .tb:hover{background:var(--glass);color:var(--t)}

@@ -113,7 +113,7 @@ def _serialize_message(db: Session, message: Message, current_user_id: int) -> M
         sender_id=message.sender_id,
         sender_name=sender.display_name if sender else "Unknown",
         sender_initials=(sender.display_name[:2].upper() if sender else "??"),
-        sender_color=sender.avatar_color if sender else "linear-gradient(135deg,#63584D,#3B1E25)",
+        sender_color=sender.avatar_color if sender else "linear-gradient(135deg,#5C5754,#3B1E25)",
         is_mine=message.sender_id == current_user_id,
         text=message.text,
         image_emoji=message.image_emoji,

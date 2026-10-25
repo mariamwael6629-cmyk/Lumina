@@ -13,10 +13,10 @@ function buildRightPanel(c) {
     'linear-gradient(135deg,#5F1B2C,#201C19)',
     '#40121E',
     'linear-gradient(135deg,#422006,#4B1B27)',
-    'linear-gradient(135deg,#1D1A16,#201C19)',
+    'linear-gradient(135deg,#1B1918,#201C19)',
     'linear-gradient(135deg,#1c1917,#201C19)',
     'linear-gradient(135deg,#661E30,#201C19)',
-    'linear-gradient(135deg,#26221E,#201C19)',
+    'linear-gradient(135deg,#232221,#201C19)',
   ];
   document.getElementById('rpContent').innerHTML = `<div class="pcard"><div class="pav" style="background:${c.color}">${c.initials}</div><div class="pname">${c.name}</div><div class="pbio">${c.is_group ? 'Group conversation' : 'Lumina contact ✦'}</div></div><div class="action-grid"><div class="at" onclick="startCall('voice')"><div class="at-icon">📞</div><div class="at-lbl">Voice Call</div></div><div class="at" onclick="startCall('video')"><div class="at-icon">🎥</div><div class="at-lbl">Video Call</div></div><div class="at"><div class="at-icon">📌</div><div class="at-lbl">Pinned</div></div><div class="at"><div class="at-icon">🔇</div><div class="at-lbl">Mute</div></div></div><div class="sec">✦ AI Smart Replies</div><div class="ai-chips">${suggestionsPool.map((s) => `<div class="chip" onclick="useChip(this)"><span class="ai-star">✦</span>${s}</div>`).join('')}</div><div class="sec">Shared Media</div><div class="media-grid">${mediaEmojis.map((e, i) => `<div class="mt"><div class="mti" style="background:${mediaBgs[i]}">${e}</div></div>`).join('')}</div>`;
 }

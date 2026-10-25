@@ -23,7 +23,7 @@ SYSTEM_USERS = [
         "username": "zephyr_maya",
         "display_name": "Maya",
         "initials": "MY",
-        "color": "#8A5A2B",
+        "color": "#8A442B",
     },
     {
         "username": "kai_vortex",
@@ -53,7 +53,7 @@ SYSTEM_USERS = [
         "username": "nyx_archive",
         "display_name": "Nyx Archive",
         "initials": "NA",
-        "color": "linear-gradient(135deg,#63584D,#3B1E25)",
+        "color": "linear-gradient(135deg,#5C5754,#3B1E25)",
     },
     {
         "username": "lumina_system",
@@ -87,7 +87,7 @@ DEMO_CONVERSATIONS = [
         "is_group": True,
         "name": "Zephyr Collective",
         "initials": "ZC",
-        "color": "#8A5A2B",
+        "color": "#8A442B",
         "members": ["zephyr_kira", "zephyr_maya"],
         "messages": [
             ("zephyr_kira", "Just pushed the new nav update \U0001f680 Check the staging branch"),
@@ -146,7 +146,7 @@ DEMO_CONVERSATIONS = [
         "is_group": False,
         "name": "Nyx Archive",
         "initials": "NA",
-        "color": "linear-gradient(135deg,#63584D,#3B1E25)",
+        "color": "linear-gradient(135deg,#5C5754,#3B1E25)",
         "members": ["nyx_archive"],
         "messages": [
             (None, "Thanks for the file!"),
@@ -186,7 +186,7 @@ DISCOVER_ROOMS = [
         "name": "Crypto Nebula",
         "slug": "crypto-nebula",
         "initials": "CN",
-        "color": "linear-gradient(135deg,#D36A2D,#ef4444)",
+        "color": "#D36A2D",
         "members": 892,
         "description": "DeFi, NFTs, Web3 — real-time alpha drops and deep-dive research threads.",
         "tags": "crypto,web3,defi,nft",
@@ -195,7 +195,7 @@ DISCOVER_ROOMS = [
         "name": "AI Frontier",
         "slug": "ai-frontier",
         "initials": "AF",
-        "color": "#8A5A2B",
+        "color": "#8A442B",
         "members": 2105,
         "description": "Latest papers, model releases, and debates on artificial general intelligence and beyond.",
         "tags": "ai,ml,llm,research",

@@ -22,7 +22,7 @@
 .hbtn-p:hover{opacity:.9;transform:scale(1.04)}
 .hbtn-g{background:var(--glass);border:1px solid var(--gb);color:var(--t)}
 .hbtn-g:hover{background:rgba(255,255,255,0.08)}
-.preview-wrap{margin:50px auto 0;width:min(700px,100%);background:rgba(24,21,18,.92);border:1px solid var(--gb);border-radius:24px;overflow:hidden;box-shadow:0 0 60px rgba(200,65,99,.18)}
+.preview-wrap{margin:50px auto 0;width:min(700px,100%);background:rgba(22,21,20,.92);border:1px solid var(--gb);border-radius:24px;overflow:hidden;box-shadow:0 0 60px rgba(200,65,99,.18)}
 .prev-bar{display:flex;align-items:center;gap:6px;padding:12px 18px;border-bottom:1px solid var(--gb);background:rgba(255,255,255,.02)}
 .pb-dots{display:flex;gap:5px}
 .pb-dot{width:11px;height:11px;border-radius:50%}
