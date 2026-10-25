@@ -1,10 +1,16 @@
-const AVATAR_COLORS = [
-  'linear-gradient(135deg,#7c3aed,#06b6d4)',
-  'linear-gradient(135deg,#f472b6,#7c3aed)',
-  'linear-gradient(135deg,#10b981,#06b6d4)',
-  'linear-gradient(135deg,#f59e0b,#ec4899)',
-  'linear-gradient(135deg,#6366f1,#f472b6)',
-];
+const AVATAR_COLORS = ['#14506B', '#E8618C', '#1F8A5B', '#D9822B', '#3A6EA5'];
+
+// Older accounts store gradient strings; show them as the matching flat colour.
+const LEGACY_HUES = {
+  '#7c3aed': '#14506B', '#f472b6': '#E8618C', '#10b981': '#1F8A5B', '#f59e0b': '#D9822B',
+  '#6366f1': '#3A6EA5', '#06b6d4': '#1A8FA3', '#8b5cf6': '#A0527A', '#475569': '#5B6670',
+  '#ec4899': '#C94F7C',
+};
+function flat(color) {
+  if (!color || !color.includes('gradient')) return color || AVATAR_COLORS[0];
+  const hex = (color.match(/#[0-9a-f]{6}/i) || [AVATAR_COLORS[0]])[0].toLowerCase();
+  return LEGACY_HUES[hex] || hex;
+}
 
 let state = {
   user: null,
@@ -36,11 +42,11 @@ function setNav(btn, section) {
     return;
   }
   if (section === 'calls') {
-    showToast('📞 Calls coming soon in v2.0!');
+    showToast('Calls are coming in v2.0');
     return;
   }
   if (section === 'files') {
-    showToast('📁 File manager launching soon!');
+    showToast('The file manager is on its way');
     return;
   }
 }
@@ -113,7 +119,7 @@ async function demoLogin() {
   setFieldError('login-error', '');
   const btn = document.getElementById('demo-submit');
   try {
-    const data = await withLoading(btn, '<span class="demo-star">✦</span> Connecting...', () => api.demoLogin());
+    const data = await withLoading(btn, '<i class="ti ti-loader-2"></i> Connecting...', () => api.demoLogin());
     setToken(data.access_token);
     state.user = data.user;
     await enterApp();
@@ -129,6 +135,7 @@ async function demoLogin() {
     const el = document.createElement('div');
     el.className = 'cp' + (i === 0 ? ' sel' : '');
     el.style.background = c;
+    el.title = 'Avatar colour';
     el.onclick = () => {
       document.querySelectorAll('#colorPicks .cp').forEach((x) => x.classList.remove('sel'));
       el.classList.add('sel');
@@ -202,7 +209,7 @@ async function doRegister() {
     setToken(data.access_token);
     state.user = data.user;
     await enterApp();
-    showToast('Welcome to Lumina! 🚀');
+    showToast('Welcome to Lumina');
   } catch (err) {
     setFieldError('register-error-s2', err.message);
   }
@@ -242,7 +249,7 @@ function applyMyAvatar() {
   const initials = (state.user.display_name || 'U').slice(0, 2).toUpperCase();
   const ma = document.getElementById('myAvatar');
   ma.textContent = initials;
-  ma.style.background = state.user.avatar_color || AVATAR_COLORS[0];
+  ma.style.background = flat(state.user.avatar_color);
 }
 
 // ---------- Conversations / contacts ----------
@@ -281,7 +288,7 @@ function renderContactList(list) {
     .map(
       (c) => `<div class="ci ${c.id === state.activeConversationId ? 'on' : ''}" onclick="selectConversation(${c.id})">
       <div style="position:relative">
-        <div class="av" style="background:${c.color};width:42px;height:42px;font-size:12px;font-weight:700;color:#fff">${c.initials}</div>
+        <div class="av" style="background:${flat(c.color)}">${c.initials}</div>
         <span class="sd ${c.status}"></span>
       </div>
       <div class="ci-info">
@@ -304,16 +311,16 @@ async function selectConversation(id) {
   const el = document.getElementById('activeStatus');
   if (c.status === 'online') {
     el.innerHTML = '<div class="ch-dot"></div>Online';
-    el.style.color = 'var(--g)';
+    el.dataset.status = 'online';
   } else if (c.status === 'away') {
     el.innerHTML = 'Away';
-    el.style.color = 'var(--amber)';
+    el.dataset.status = 'away';
   } else {
     el.innerHTML = 'Offline';
-    el.style.color = 'var(--t3)';
+    el.dataset.status = 'off';
   }
   const av = document.getElementById('activeAvatar');
-  av.style.background = c.color;
+  av.style.background = flat(c.color);
   av.innerHTML =
     c.initials +
     (c.status === 'online' ? '<span class="sd on"></span>' : c.status === 'away' ? '<span class="sd aw"></span>' : '<span class="sd off"></span>');
@@ -343,7 +350,7 @@ async function loadThread(id) {
 function renderMessages(msgs) {
   const container = document.getElementById('msgContainer');
   if (!msgs.length) {
-    container.innerHTML = '<div class="empty-state">No messages yet — say hi 👋</div>';
+    container.innerHTML = '<div class="empty-state">No messages yet. Say hi.</div>';
     return;
   }
   container.innerHTML = msgs.map(renderMsg).join('');
@@ -364,7 +371,7 @@ function renderMsg(m) {
   const reacts = m.reactions && m.reactions.length
     ? `<div class="reacts">${m.reactions.map((r) => `<div class="rc" onclick="reactMsg(${m.id},'${r.e}')">${r.e} <span>${r.n}</span></div>`).join('')}</div>`
     : '';
-  const av = !m.is_mine ? `<div class="mav" style="background:${m.sender_color}">${m.sender_initials}</div>` : '';
+  const av = !m.is_mine ? `<div class="mav" style="background:${flat(m.sender_color)}">${m.sender_initials}</div>` : '';
   return `<div class="mrow ${cls}">${av}<div class="mg">${content}${meta}${reacts}</div></div>`;
 }
 
@@ -420,7 +427,7 @@ function insertEmoji() {
 }
 
 function insertVoice() {
-  showToast('🎙 Voice message recording coming soon!');
+  showToast('Voice messages are coming soon');
 }
 
 // Polling keeps the open thread + sidebar previews fresh without a WebSocket.
@@ -446,23 +453,12 @@ function buildRightPanel(c) {
     "I'll set a reminder for that",
     'Cant wait, this is going to be 🔥',
   ];
-  const mediaEmojis = ['🌌', '🔮', '🌊', '🦋', '🔥', '🌿', '⚡', '🎨', '🌙'];
-  const mediaBgs = [
-    'linear-gradient(135deg,#0f172a,#1e1b4b)',
-    'linear-gradient(135deg,#1e1b4b,#312e81)',
-    'linear-gradient(135deg,#0c4a6e,#0f172a)',
-    'linear-gradient(135deg,#4a044e,#1e1b4b)',
-    'linear-gradient(135deg,#422006,#1e1b4b)',
-    'linear-gradient(135deg,#052e16,#0f172a)',
-    'linear-gradient(135deg,#1c1917,#0f172a)',
-    'linear-gradient(135deg,#2d1b69,#0f172a)',
-    'linear-gradient(135deg,#0d2137,#0f172a)',
-  ];
-  document.getElementById('rpContent').innerHTML = `<div class="pcard"><div class="pav" style="background:${c.color}">${c.initials}</div><div class="pname">${c.name}</div><div class="pbio">${c.is_group ? 'Group conversation' : 'Lumina contact ✦'}</div></div><div class="action-grid"><div class="at" onclick="startCall('voice')"><div class="at-icon">📞</div><div class="at-lbl">Voice Call</div></div><div class="at" onclick="startCall('video')"><div class="at-icon">🎥</div><div class="at-lbl">Video Call</div></div><div class="at"><div class="at-icon">📌</div><div class="at-lbl">Pinned</div></div><div class="at"><div class="at-icon">🔇</div><div class="at-lbl">Mute</div></div></div><div class="sec">✦ AI Smart Replies</div><div class="ai-chips">${suggestionsPool.map((s) => `<div class="chip" onclick="useChip(this)"><span class="ai-star">✦</span>${s}</div>`).join('')}</div><div class="sec">Shared Media</div><div class="media-grid">${mediaEmojis.map((e, i) => `<div class="mt"><div class="mti" style="background:${mediaBgs[i]}">${e}</div></div>`).join('')}</div>`;
+  const mediaBgs = ['#DCE7EE', '#F6E2B3', '#E9D6DD', '#D5E6DC', '#E4E0D6', '#D9E2F0', '#F2D9C4', '#DDE5E8', '#E8E1EE'];
+  document.getElementById('rpContent').innerHTML = `<div class="pcard"><div class="pav" style="background:${flat(c.color)}">${c.initials}</div><div class="pname">${c.name}</div><div class="pbio">${c.is_group ? 'Group conversation' : 'Lumina contact'}</div></div><div class="action-grid"><div class="at" onclick="startCall('voice')"><div class="at-icon"><i class="ti ti-phone"></i></div><div class="at-lbl">Voice Call</div></div><div class="at" onclick="startCall('video')"><div class="at-icon"><i class="ti ti-video"></i></div><div class="at-lbl">Video Call</div></div><div class="at"><div class="at-icon"><i class="ti ti-pin"></i></div><div class="at-lbl">Pinned</div></div><div class="at"><div class="at-icon"><i class="ti ti-volume-off"></i></div><div class="at-lbl">Mute</div></div></div><div class="sec">AI smart replies</div><div class="ai-chips">${suggestionsPool.map((s) => `<div class="chip" onclick="useChip(this)"><i class="ti ti-sparkles ai-star"></i>${s}</div>`).join('')}</div><div class="sec">Shared media</div><div class="media-grid">${mediaBgs.map((bg) => `<div class="mt"><div class="mti" style="background:${bg}"><i class="ti ti-photo"></i></div></div>`).join('')}</div>`;
 }
 
 function useChip(el) {
-  const text = el.textContent.replace('✦', '').trim();
+  const text = el.textContent.trim();
   document.getElementById('msgInput').value = text;
   document.getElementById('msgInput').focus();
 }
@@ -480,10 +476,10 @@ async function buildDiscover() {
   grid.innerHTML = state.rooms
     .map(
       (r) => `<div class="disc-card">
-      <div class="dc-top"><div class="dc-av" style="background:${r.color}">${r.initials}</div><div><div class="dc-name">${r.name}</div><div class="dc-members">${r.members.toLocaleString()} members</div></div></div>
+      <div class="dc-top"><div class="dc-av" style="background:${flat(r.color)}">${r.initials}</div><div><div class="dc-name">${r.name}</div><div class="dc-members">${r.members.toLocaleString()} members</div></div></div>
       <div class="dc-desc">${r.description}</div>
       <div class="dc-tags">${r.tags.map((t) => `<span class="tag">#${t}</span>`).join('')}</div>
-      <button class="join-btn" ${r.joined ? 'disabled' : ''} onclick="joinRoom(this,${r.id})">${r.joined ? '✓ Joined' : 'Join Room →'}</button>
+      <button class="join-btn" ${r.joined ? 'disabled' : ''} onclick="joinRoom(this,${r.id})">${r.joined ? 'Joined' : 'Join room'}</button>
     </div>`
     )
     .join('');
@@ -493,11 +489,9 @@ async function joinRoom(btn, roomId) {
   btn.disabled = true;
   try {
     await api.joinRoom(roomId);
-    btn.textContent = '✓ Joined!';
-    btn.style.background = 'rgba(16,185,129,.15)';
-    btn.style.borderColor = 'rgba(16,185,129,.4)';
-    btn.style.color = '#34d399';
-    showToast('Joined room! 🚀');
+    btn.textContent = 'Joined';
+    btn.classList.add('joined');
+    showToast('You joined the room');
   } catch (err) {
     btn.disabled = false;
     showToast(err.message, 'error');
@@ -518,7 +512,7 @@ async function buildNotifs() {
   list.innerHTML = `<div class="notif-title">Notifications</div>${notifs
     .map(
       (n) => `<div class="notif-item ${n.is_read ? '' : 'unread'}" onclick="markNotifRead(${n.id})">
-      <div class="notif-av" style="background:${n.actor_color}">${n.actor_initials}</div>
+      <div class="notif-av" style="background:${flat(n.actor_color)}">${n.actor_initials}</div>
       <div class="notif-body"><div class="notif-from">${n.actor_name}</div><div class="notif-text">${n.text}</div></div>
       <div style="display:flex;align-items:center;gap:8px"><div class="notif-time">${humanizeTime(n.created_at)}</div>${n.is_read ? '' : '<div class="notif-dot"></div>'}</div>
     </div>`
@@ -557,7 +551,7 @@ function buildProfile() {
   const profAv = document.getElementById('profAvatar');
   if (profAv) {
     profAv.textContent = initials;
-    profAv.style.background = u.avatar_color || AVATAR_COLORS[0];
+    profAv.style.background = flat(u.avatar_color);
   }
   const pn = document.getElementById('profName');
   if (pn) pn.textContent = u.display_name || 'Your Name';
@@ -582,8 +576,10 @@ function buildProfColors() {
   wrap.innerHTML = '';
   AVATAR_COLORS.forEach((c) => {
     const el = document.createElement('div');
-    el.className = 'cp' + (state.user && state.user.avatar_color === c ? ' sel' : '');
+    el.className = 'cp' + (state.user && flat(state.user.avatar_color) === c ? ' sel' : '');
     el.style.background = c;
+    el.dataset.color = c;
+    el.title = 'Avatar colour';
     el.onclick = () => {
       document.querySelectorAll('#profColorPicks .cp').forEach((x) => x.classList.remove('sel'));
       el.classList.add('sel');
@@ -609,7 +605,7 @@ async function saveProfile() {
   const bio = document.getElementById('pf-bio')?.value.trim();
   const email = document.getElementById('pf-email')?.value.trim();
   const selectedTheme = document.querySelector('.tp.sel')?.dataset.pendingTheme;
-  const selectedColor = document.querySelector('#profColorPicks .cp.sel')?.style.background;
+  const selectedColor = document.querySelector('#profColorPicks .cp.sel')?.dataset.color;
 
   const payload = {};
   if (dname) payload.display_name = dname;
@@ -624,7 +620,7 @@ async function saveProfile() {
     state.user = await withLoading(btn, '<i class="ti ti-loader-2"></i> Saving...', () => api.updateMe(payload));
     buildProfile();
     applyMyAvatar();
-    showToast('Profile saved ✓');
+    showToast('Profile saved');
     setTimeout(closeOverlay, 800);
   } catch (err) {
     showToast(err.message, 'error');
@@ -638,7 +634,7 @@ function startCall(type) {
   if (!c) return;
   const modal = document.getElementById('call-modal');
   document.getElementById('callAvatar').textContent = c.initials;
-  document.getElementById('callAvatar').style.background = c.color;
+  document.getElementById('callAvatar').style.background = flat(c.color);
   document.getElementById('callName').textContent = c.name;
   document.getElementById('callType').textContent = type === 'video' ? 'Video Call' : 'Voice Call';
   document.getElementById('callStatus').textContent = 'Connecting...';
@@ -654,7 +650,7 @@ function endCall() {
 }
 
 function openNewChat() {
-  showToast('💬 Select a contact from the list to start chatting!');
+  showToast('Pick someone from the list to start chatting');
 }
 
 function showToast(msg, type) {
@@ -663,25 +659,8 @@ function showToast(msg, type) {
   const t = document.createElement('div');
   t.id = 'toast';
   t.textContent = msg;
-  Object.assign(t.style, {
-    position: 'fixed',
-    bottom: '24px',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    background: 'rgba(14,14,28,0.96)',
-    color: '#f1f5f9',
-    border: '1px solid rgba(255,255,255,0.1)',
-    backdropFilter: 'blur(20px)',
-    padding: '10px 22px',
-    borderRadius: '12px',
-    fontSize: '13px',
-    fontWeight: '500',
-    zIndex: '9999',
-    fontFamily: 'Inter,sans-serif',
-    boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
-    animation: 'mIn .3s ease',
-  });
-  if (type === 'error') t.style.borderColor = 'rgba(244,114,182,0.4)';
+  t.className = 'toast' + (type === 'error' ? ' toast-error' : '');
+  t.setAttribute('role', type === 'error' ? 'alert' : 'status');
   document.body.appendChild(t);
   setTimeout(() => t.remove(), 3000);
 }
@@ -697,4 +676,16 @@ function showToast(msg, type) {
   } catch (err) {
     setToken(null);
   }
+})();
+
+// ---------- Landing: window light follows the visitor's local time ----------
+(function placeSunlight() {
+  const el = document.getElementById('sunlight');
+  if (!el) return;
+  const h = new Date().getHours() + new Date().getMinutes() / 60;
+  // Morning light falls steep from the left, evening light long from the right.
+  const t = Math.min(Math.max((h - 6) / 14, 0), 1);
+  el.style.setProperty('--sun-angle', `${-28 + t * 32}deg`);
+  el.style.setProperty('--sun-skew', `${-30 + t * 36}deg`);
+  el.style.opacity = h < 6 || h > 20 ? '0.35' : '0.9';
 })();
